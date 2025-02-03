@@ -9,7 +9,9 @@ The Cisco Telemetry Broker optimizes your telemetry pipelines for the hybrid clo
 In this Lab, you will learn how to setup the Cisco Telemetry Broker to route telemetry from example sources to destinations and track the end-to-end flow of telemetry through the Telemetry Broker.
 
 At the end of the Lab, you will be able to:
-* 
+* Create a UDP traffic listener and Destination for UDP traffic (UI and API)
+* Connect the Input traffic to the Destination (UI and API)
+* Visualize metrics on the Dashboard (UI and API)
 
 ## Agenda
 
