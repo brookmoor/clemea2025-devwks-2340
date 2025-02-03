@@ -29,16 +29,8 @@ At the end of the Lab, you will be able to:
     * Create UDP Output
     * Pull stats about Inputs/Outputs
     * Visualize using UI (optional)
-* Exercise 3 (AWS Input)
-    * API calls to configure AWS Input
-    * Create AWS input
-    * Create new UDP destination
-    * Connect AWS input to UDP destination
-    * View results via API
-    * Confirm results via UI
-    * Confirm results via Master dashboard
 
-### Cisco Telemetry Broker Overview
+## Cisco Telemetry Broker Overview
 
 Let's start off with some basic concepts of CTB.
 
@@ -53,7 +45,7 @@ The document above explains the following concepts about CTB:
 * Deployment specifications
 * Typical deployment scenario
 
-### Lab Setup
+## Lab Setup
 
 ![DEVWKS 2340 Workshop Setup](images/Workshop-setup.jpg)
 
@@ -64,67 +56,9 @@ The diagram above shows how the DEVWKS 2340 lab has been setup.
 * A CTB Broker node running on a private ESXi server is connected to the CTB Manager
 * Telemetry exporters have been configured to send telemetry to all Broker Nodes
     * This is the push model where telemetry is sent to CTB
-* Broker nodes can be configured to pull telemetry from AWS VPC flow logs
+* Broker nodes can be configured to pull telemetry, say from AWS VPC flow logs
     * This is the pull model where CTB can reach out and get telemetry from sources
 
-### Exercise 1 (UDP Input -> Output via UI)
+## [Exercise 1 (UDP Input -> Output via UI)](01-CTB-UI.md)
 
-This exercise has 4 main parts
-* Configure Input
-* Configure Destination
-* Configure Rules
-* Visualize data flowing
-
-Lets get started
-
-#### Configure Input
-
-![Configure Inputs](images/1.1-configure-inputs-1.jpeg)
-
-![Configure Inputs](images/1.1-configure-inputs-2.jpeg)
-
-![Configure Inputs](images/1.1-configure-inputs-3.jpeg)
-
-![Configure Inputs](images/1.1-configure-inputs-4.jpeg)
-
-#### Configure Destination
-
-![Configure Destination](images/1.2-configure-destination-1.jpeg)
-
-![Configure Destination](images/1.2-configure-destination-2.jpeg)
-
-![Configure Destination](images/1.2-configure-destination-3.jpeg)
-
-![Configure Destination](images/1.2-configure-destination-4.jpeg)
-
-#### Configure Rules
-
-![Configure Rules](images/1.3-configure-rules-1.jpeg)
-
-![Configure Rules](images/1.3-configure-rules-2.jpeg)
-
-![Configure Rules](images/1.3-configure-rules-3.jpeg)
-
-![Configure Rules](images/1.3-configure-rules-4.jpeg)
-
-![Configure Rules](images/1.3-configure-rules-5.jpeg)
-
-![Configure Rules](images/1.3-configure-rules-6.jpeg)
-
-![Configure Rules](images/1.3-configure-rules-7.jpeg)
-
-#### Visualize Data
-
-![Visualize telemetry](images/1.4-visualilze-data-1.jpeg)
-
-![Visualize telemetry](images/1.4-visualilze-data-1.jpeg)
-
-![Visualize telemetry](images/1.4-visualilze-data-1.jpeg)
-
-![Visualize telemetry](images/1.4-visualilze-data-1.jpeg)
-
-![Visualize telemetry](images/1.4-visualilze-data-1.jpeg)
-
-### Exercise 2 (UDP Input -> Output via API)
-
-
+## [Exercise 2 (UDP Input -> Output via API)](01-CTB-UI.md)
