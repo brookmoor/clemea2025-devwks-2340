@@ -61,4 +61,4 @@ The diagram above shows how the DEVWKS 2340 lab has been setup.
 
 ## [Exercise 1 (UDP Input -> Output via UI)](01-CTB-UI.md)
 
-## [Exercise 2 (UDP Input -> Output via API)](01-CTB-UI.md)
+## [Exercise 2 (UDP Input -> Output via API)](02-CTB-API.md)
