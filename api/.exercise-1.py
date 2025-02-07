@@ -10,25 +10,30 @@ print (response)
 nodes = ctb.get_nodes()
 print(nodes.json())
 
-print (nodes.json()[0]["id"])
+node_id = nodes.json()[0]["id"]
+print (node_id)
 
-inputs = ctb.get_input_types()
-print(inputs.json())
+input_types = ctb.get_input_types()
+print(input_types.json())
 
-new_inputs = ctb.create_input("api_input", "udp_listener", "2", "4789", False)
-print (new_inputs.status_code)
-print(new_inputs.json())
+new_input = ctb.create_input("api_input", "udp_listener", node_id, "2055", False)
+print (new_input.status_code)
+print (new_input.json())
+new_input_id = new_input.json()["id"]
+print (new_input_id)
 
-new_dests = ctb.create_destination("api_dest", "udp", "10.0.54.250", "4789", False)
-print (new_dests.status_code)
-print (new_dests.json())
+new_dest = ctb.create_destination("api_dest", "udp", "10.0.54.121", "20001", False)
+print (new_dest.status_code)
+print (new_dest.json())
+new_dest_id = new_dest.json()["id"]
+print (new_dest_id)
 
-new_subs = ctb.create_subscription("7", "5")
-print (new_subs.status_code)
-print (new_subs.json())
+new_sub = ctb.create_subscription(new_input_id, new_dest_id)
+print (new_sub.status_code)
+print (new_sub.json())
 
-current_input = ctb.get_inputs("7")
+current_input = ctb.get_inputs(new_input_id)
 print(current_input.json())
 
-dests = ctb.get_destinations("5")
-print(dests.json())
+current_dest = ctb.get_destinations(new_dest_id)
+print(current_dest.json())

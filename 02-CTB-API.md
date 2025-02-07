@@ -33,13 +33,13 @@ We will run this Exercise using Python's interactive mode so that it becomes sim
 
 To get started do this in the terminal window:
 ```
-devnet@devnet-events: ~/Desktop/DEVWKS-2340/api> python3 start_ctb.py
+devnet@devnet-events: ~/Desktop/DEVWKS-2340/api$ python3 start_ctb.py
 ```
 
 Your terminal should look like this:
 
 ```
-devnet@devnet-events: ~/Desktop/DEVWKS-2340/api> python3 ./start_ctb.py 
+devnet@devnet-events: ~/Desktop/DEVWKS-2340/api$ python3 ./start_ctb.py 
 CTB Python API Shell. Type in the following to get started: 
      (use the managerip, username, password from the lab environment) 
      >>> import ctb
@@ -86,18 +86,18 @@ Extract the node id of the first node - we will need it later
 Continuing with the same prompt, we can first examine all the different input types that are available on this system
 
 ```
->>> inputs = ctb.get_input_types()
->>> print(inputs.json())
+>>> input_types = ctb.get_input_types()
+>>> print(input_types.json())
 [{'id': 2, 'name': 'aws_flowlog', 'is_enabled': True, 'label': 'AWS VPC Flow log', 'ha_compatible': False, 'max_instances_per_node': None, 'created': '2025-01-31T19:04:44.608173Z', 'lastupdatedtime': '2025-01-31T19:04:44.608173Z'}, {'id': 3, 'name': 'azure_flowlog', 'is_enabled': True, 'label': 'Azure NSG Flow log', 'ha_compatible': False, 'max_instances_per_node': None, 'created': '2025-01-31T19:04:44.612737Z', 'lastupdatedtime': '2025-01-31T19:04:44.612737Z'}, {'id': 4, 'name': 'flow_generator', 'is_enabled': True, 'label': 'Flow Generator Input', 'ha_compatible': False, 'max_instances_per_node': 1, 'created': '2025-01-31T19:04:44.888487Z', 'lastupdatedtime': '2025-01-31T19:04:44.888487Z'}, {'id': 5, 'name': 'proxy_logs', 'is_enabled': True, 'label': 'Proxy log', 'ha_compatible': True, 'max_instances_per_node': 5, 'created': '2025-01-31T19:04:45.460773Z', 'lastupdatedtime': '2025-01-31T19:04:45.460773Z'}, {'id': 1, 'name': 'udp_listener', 'is_enabled': True, 'label': 'UDP Input', 'ha_compatible': True, 'max_instances_per_node': None, 'created': '2025-01-31T19:04:44.603390Z', 'lastupdatedtime': '2025-01-31T19:04:44.603390Z'}]
 ```
 
 In this exercise, we will create a `UDP Input` - type is `udp_listener`
 
 ```
->>> new_inputs = ctb.create_input("api_input", "udp_listener", "2", "4789", False)
->>> print (new_inputs.status_code)
+>>> new_input = ctb.create_input("api_input", "udp_listener", "2", "2055", False)
+>>> print (new_input.status_code)
 201
->>> print(new_inputs.json())
+>>> print(new_input.json())
 ```
 
 You should now see the new input that was just created. Something like this:
@@ -112,10 +112,10 @@ Again, make a note of the first field, which is the `input id` - we are going to
 Continuing with the same prompt, we will create a `UDP Destination` - type is `udp`
 
 ```
->>> new_dests = ctb.create_destination("api_dest", "udp", "10.0.54.250", "4789", False)
->>> print (new_dests.status_code)
+>>> new_dest = ctb.create_destination("api_dest", "udp", "10.0.54.121", "20001", False)
+>>> print (new_dest.status_code)
 201
->>> print (new_dests.json())
+>>> print (new_dest.json())
 ```
 
 You should now see the new destination that was just created. Something like this:
@@ -130,10 +130,10 @@ Again, make a note again of the first field, which is the `destination id` - we 
 Continuing with the same prompt,
 
 ```
->>> new_subs = ctb.create_subscription("7", "5")
->>> print (new_subs.status_code)
+>>> new_sub = ctb.create_subscription("7", "5")
+>>> print (new_sub.status_code)
 201
->>> print (new_subs.json())
+>>> print (new_sub.json())
 {'id': 4, 'source': 7, 'destination': 5, 'subnets': []}
 ```
 
@@ -156,8 +156,8 @@ If data is now flowing at Input and Destination, one can verify that by examinin
 And similarly for destination,
 
 ```
->>> dests = ctb.get_destinations("5")
->>> print(dests.json())
+>>> current_dest = ctb.get_destinations("5")
+>>> print(current_dest.json())
 {'id': 5, 'name': 'api_dest', 'alerts': [], 'exporter_count': 0, 'metrics': {'tx_pkts': None, 'tx_bytes': None, 'tx_bps': None, 'dropped_pkts': None, 'dropped_bytes': None}, 'subscription_set': [{'id': 4, 'port': 4789, 'source': 7, 'destination': 5, 'subnets': [], 'type': 'network'}], 'created': '2025-02-03T22:14:00.169682Z', 'type': 'udp', 'last_time': None, 'status': 'inactive', 'address': '10.0.54.250', 'port': 4789, 'dcd_enabled': False}
 ```
 
